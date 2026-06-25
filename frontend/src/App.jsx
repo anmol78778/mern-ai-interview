@@ -1,7 +1,9 @@
 import React from 'react'
-import {  Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
-import Auth from './pages/Auth'
+import Auth from './pages/auth'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 function App() {
   return (

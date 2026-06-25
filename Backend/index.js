@@ -12,6 +12,8 @@ app.get('/',(req,res)=>{
     return res.json({message:"server started"})
 })
 
+
+
 const mongo=process.env.MONGODB_URL
 app.listen(PORT,()=>{
     connectDb()
