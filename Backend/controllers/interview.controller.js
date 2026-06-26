@@ -32,28 +32,60 @@ export const analyzeResume = async (req, res) => {
       .replace(/\s+/g, " ")
       .trim();
 
-    const messages = [
-      {
-        role: "system",
-        content: `
-Extract structured data from resume.
+//     const messages = [
+//       {
+//         role: "system",
+//         content: `
+// Extract structured data from resume.
 
-Return strictly JSON:
+// Return strictly JSON:
+
+// {
+//   "role": "string",
+//   "experience": "string",
+//   "projects": ["project1", "project2"],
+//   "skills": ["skill1", "skill2"]
+// }
+// `
+//       },
+//       {
+//         role: "user",
+//         content: resumeText
+//       }
+//     ];
+
+const messages = [
+  {
+    role: "system",
+    content: `
+Extract structured information from the resume.
+
+Return ONLY valid JSON.
+
+Rules:
+- "role": The most suitable job role (e.g. Full Stack Developer, Frontend Developer, Backend Developer).
+- "experience": Return ONLY years of professional experience.
+  - If the candidate is a student or has no full-time work experience, return "Fresher".
+  - Examples: "Fresher", "1 year", "2 years", "5+ years".
+  - Never return education details or project descriptions.
+- "projects": Return only project names.
+- "skills": Return only technical skills.
+
+Return exactly this format:
 
 {
-  "role": "string",
-  "experience": "string",
-  "projects": ["project1", "project2"],
-  "skills": ["skill1", "skill2"]
+  "role": "",
+  "experience": "",
+  "projects": [],
+  "skills": []
 }
 `
-      },
-      {
-        role: "user",
-        content: resumeText
-      }
-    ];
-
+  },
+  {
+    role: "user",
+    content: resumeText
+  }
+];
 
     const aiResponse = await askAi(messages)
 
