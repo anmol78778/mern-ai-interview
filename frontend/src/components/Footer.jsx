@@ -1,5 +1,5 @@
 import React from 'react'
-// import { BsRobot, BsTwitch, BsTwitterX } from 'react-icons/bs'
+import { BsRobot, BsTwitch, BsTwitterX } from 'react-icons/bs'
 
 function Footer() {
   return (
