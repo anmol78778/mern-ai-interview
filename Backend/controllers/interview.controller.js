@@ -240,7 +240,7 @@ export const submitAnswer = async (req, res) => {
     const { interviewId, questionIndex, answer, timeTaken } = req.body
 
     const interview = await Interview.findById(interviewId)
-    
+
     if (!interview) {
     return res.status(404).json({
         message: "Interview not found."
@@ -357,7 +357,7 @@ export const finishInterview = async (req,res) => {
     const {interviewId} = req.body
     const interview = await Interview.findById(interviewId)
     if(!interview){
-      return res.status(400).json({message:"failed to find Interview"})
+      return res.status(404).json({message:"failed to find Interview"})
     }
 
     const totalQuestions = interview.questions.length;
