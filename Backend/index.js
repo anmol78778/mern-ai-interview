@@ -29,7 +29,7 @@ app.use('/api/user',userRouter)
 app.use("/api/interview" , interviewRouter)
 app.use("/api/payment" , paymentRouter)
 
-const mongo=process.env.MONGODB_URL
+
 app.listen(PORT,()=>{
     connectDb()
     console.log(`server running on port ${PORT} `)

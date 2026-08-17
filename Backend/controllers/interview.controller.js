@@ -32,27 +32,7 @@ export const analyzeResume = async (req, res) => {
       .replace(/\s+/g, " ")
       .trim();
 
-//     const messages = [
-//       {
-//         role: "system",
-//         content: `
-// Extract structured data from resume.
 
-// Return strictly JSON:
-
-// {
-//   "role": "string",
-//   "experience": "string",
-//   "projects": ["project1", "project2"],
-//   "skills": ["skill1", "skill2"]
-// }
-// `
-//       },
-//       {
-//         role: "user",
-//         content: resumeText
-//       }
-//     ];
 
 const messages = [
   {
@@ -260,6 +240,12 @@ export const submitAnswer = async (req, res) => {
     const { interviewId, questionIndex, answer, timeTaken } = req.body
 
     const interview = await Interview.findById(interviewId)
+    
+    if (!interview) {
+    return res.status(404).json({
+        message: "Interview not found."
+    });
+}
     const question = interview.questions[questionIndex]
 
     // If no answer
