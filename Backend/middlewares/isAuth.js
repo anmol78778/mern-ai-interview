@@ -19,7 +19,7 @@ const isAuth = async (req,res,next) => {
    
 
     } catch (error) {
-        return res.status(500).json({message:`isAuth error ${error}`})
+        return res.status(401).json({message:`isAuth error ${error}`})
     }
     
 }
