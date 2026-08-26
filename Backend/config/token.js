@@ -6,6 +6,7 @@ const genToken = async (userId) => {
 return token
     } catch (error) {
         console.log(error)
+        throw error
     }
 
 }
