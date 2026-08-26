@@ -71,7 +71,7 @@ Return exactly this format:
 
     const parsed = JSON.parse(aiResponse);
 
-    fs.unlinkSync(filepath)
+    await fs.unlinkSync(filepath)
 
 
     res.json({
