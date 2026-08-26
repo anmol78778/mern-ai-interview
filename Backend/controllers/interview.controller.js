@@ -89,7 +89,7 @@ Return exactly this format:
       fs.unlinkSync(req.file.path);
     }
 
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: "Failed to analyze resume" });
   }
 };
 
